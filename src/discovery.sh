@@ -26,7 +26,6 @@ if [ $2 = "-s" ]; then
 
 	# get all urls
 	echoTask "Getting All Urls"
-	echo $1
 	echo $1  | gau -o $dir/tmp.txt 2> err.txt;
 	# echo $1 | waybackurls >> $dir/tmp.txt;
 	cat $dir/tmp.txt | sort -u > $dir/urls.txt;rm $dir/tmp.txt;
