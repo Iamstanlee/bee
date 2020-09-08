@@ -34,7 +34,7 @@ if [ $2 = "-s" ]; then
 	# fuzz/ directory search
 	echoTask "Fuzzing For Juicy Files And Directories"
 	for domain in $(cat $dir/domains.txt);do
-	ffuf -c -H "X-Aiven-Client-Version: aiven-console/3.2.0-1475.gfa4007f97e" -H "Authorization: aivenv1 zS7n14DGuWR8GXKlxu89U5GbgR0QDlFNCCMzhayMDCfNsxNmFSmkqziC1WBZYTU8DBZydgg2qkX10zf+dO0cHZprS1Gt4TXMjPrvySfCqZTEjvbifpOWC+PwCVzncS/Ij9p+QOjwVB05SkpSib24NwYEWBpdHlFYT8ybUP1UXvzx6pSSyVEFvLNbazBneXwsAWp5814NryoaaTLr1Qe8pv0tTXids99E4/AnKedVjfwvh0imnRS0grbD0ieNpzW9DKFnSTG6GXH81Wx3B2fWBkMaSTOxLzVDcxn6lZegNfqfKUhCkL74S/arERaI5vRJ4TDLRDiOzHW7Bwez9pIVq/tM0BowoQEiuTbRbOFjJbGnF81CpC1bfDg38mEjir6I" -H "X-Forwarded-For: 127.0.0.1" -H "User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:72.0) Gecko/20100101 Firefox/72.0" -u "https://$1/FUZZ" -w ~/wordlists/directory.txt -s -D -e js,php,bak,txt,asp,aspx,jsp,html,zip,jar,sql,json,old,gz,shtml,log,swp,yaml,yml,config,save,rsa,ppk -ac -o $dir/fuzz.tmp
+	ffuf -c -H "X-Forwarded-For: 127.0.0.1" -H "User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:72.0) Gecko/20100101 Firefox/72.0" -u "https://$1/FUZZ" -w ~/wordlists/directory.txt -s -D -e js,php,bak,txt,asp,aspx,jsp,html,zip,jar,sql,json,old,gz,shtml,log,swp,yaml,yml,config,save,rsa,ppk -ac -o $dir/fuzz.tmp
 	cat $dir/fuzz.tmp | jq '[.results[]|{url: .url, status: .status, length: .length}]' | grep -oP "status\":\s(\d{3})|length\":\s(\d{1,7})|url\":\s\"(http[s]?:\/\/.*?)\"" | paste -d' ' - - - | awk '{print $2" "$4" "$6}' | sed 's/\"//g' > $dir/fuzz.txt;
 	done;
 
