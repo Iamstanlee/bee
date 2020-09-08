@@ -4,7 +4,7 @@ green=`tput setaf 2`
 reset=`tput sgr0`
 
 dir=~/recon/$1
-if [ ! -d $dir]; then
+if [ ! -d $dir ]; then
 		mkdir $dir;
 fi
 sublist3r.py -d $1 -o $dir/subs.txt;
@@ -16,7 +16,7 @@ echo "${green}__________Checking For Live Domains__________${reset}"
 cat $dir/subdomains.txt | httpx -follow-redirects  -title -status-code --follow-host-redirects -threads 300 -silent -o $dir/httpxdomains.txt;
 # scan for potential takeovers
 echo "${green}__________Checking For Potential Subdomain Takeover__________${reset}"
-subjack -w $dir/subdomains.txt -t 100 -timeout 30 -a -o -ssl $dir/toTakover.txt;
+subjack -w $dir/subdomains.txt -t 100 -timeout 30 -a -ssl -o $dir/toTakover.txt;
 
 # fix issue with subover providers.json file
 # echo "Results from subover -->" >> $dir/toTakover.txt;

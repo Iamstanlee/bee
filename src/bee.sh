@@ -18,7 +18,7 @@ reset=`tput sgr0`
 # -s for small scope recon eg "hackerone.com"
 # -m/none for medium scope recon eg "*.hackerone.com"
 function doRecon {
-        if [ $2 = "-s" ]; then
+        if [ "$2" = "-s" ]; then
                 for url in $(cat $1); do
                         echo '_____________________________________________'
                         echo  "${red} Testing : ${green} ${url} ${reset}"

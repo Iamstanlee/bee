@@ -18,7 +18,7 @@ function doGF {
 	done
 }
 
-if [ $2 = "-s" ]; then
+if [ "$2" = "-s" ]; then
 	if [ ! -d $dir ]; then
 		mkdir $dir;
 	fi
@@ -80,7 +80,7 @@ else
 
 	# extract js files
 	echoTask "Extracting Js Files"
-	cat $dir/urls.txt | grep -P "\w+\.js(\?|$)" | tee -a $dir/js.txt
+	cat $dir/urls.txt | grep -P "\w+\.js(\?|$)" > $dir/js.txt
     
     # run secretfinder against js files
 	echoTask "Running Secretfinder Against Js Files"

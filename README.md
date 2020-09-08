@@ -13,9 +13,17 @@ Bee is a c-tier recon framework, inspired by Harsh-Bothra's [Bheem](https://gith
 
 ### Installation
 
--  clone this repo `git clone https://github.com/Iamstanlee/bee.git`
--  `cd bee;chmod +x install.sh`
--  then run `./install.sh`
+-  clone this repo 
+	```
+	git clone https://github.com/Iamstanlee/bee.git
+	```
+-  ```
+	cd bee;chmod +x install.sh
+	```
+-  then run 
+	```
+	./install.sh
+	```
 
 ### Usage
 
