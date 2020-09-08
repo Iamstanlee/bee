@@ -52,7 +52,7 @@ if [ $2 = "-s" ]; then
 		echo -ne "${green}________${i} / ${c} Js files checked ________${reset}\\r" 
 	done;
 
-	# look for potentials bugs via gf
+	# look for potentials urls via gf
 	echoTask "Checking Urls Against GF-Patterns"
     doGF $dir/urls.txt	
 
@@ -91,7 +91,7 @@ else
 		echo -ne "${green}________${i} / ${c} Js files checked ________${reset}\\r" 
 	done;
 
-	# look for potentials bugs via gf
+	# look for potentials urls via gf
 	echoTask "Checking Urls Against GF-Patterns"
     doGF $dir/urls.txt	
 
