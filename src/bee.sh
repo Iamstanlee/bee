@@ -58,4 +58,4 @@ function doRecon {
         fi
 }
 
-doRecon ~/bee/new_targets.txt $1
+doRecon ~/bee/newtargets.txt $1
