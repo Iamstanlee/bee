@@ -10,7 +10,7 @@
 	|/ \___/ (_______/(_______/ 
 ```
 
-Bee is a C-tier recon framework, inspired by Harsh-Bothra's [Bheem][https://github.com/harsh-bothra/Bheem]
+Bee is a C-tier recon framework, inspired by Harsh-Bothra's [Bheem](https://github.com/harsh-bothra/Bheem)
 
 ### Tools Used
   * gf
