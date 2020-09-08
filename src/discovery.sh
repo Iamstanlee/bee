@@ -44,13 +44,14 @@ if [ $2 = "-s" ]; then
 
 	# run secretfinder against js files
 	echoTask "Running Secretfinder Against Js Files"
-	i=0
-	c=`cat $dir/js.txt | wc -l`
-	for file in $(cat $dir/js.txt);do
-		secretFinder.py -i $file -o cli >> $dir/secrets.txt
-		let "i+=1"
-		echo -ne "${green}________${i} / ${c} Js files checked ________${reset}\\r" 
-	done;
+	# i=0
+	# c=`cat $dir/js.txt | wc -l`
+	# for file in $(cat $dir/js.txt);do
+	# 	secretFinder.py -i $file -o cli >> $dir/secrets.txt
+	# 	let "i+=1"
+	# 	echo -ne "${green}________${i} / ${c} Js files checked ________${reset}\\r" 
+	# done;
+	cat $dir/js.txt | xargs -P 20 -I %% bash -c 'secretFinder.py -i %% -o cli' 2> /dev/null >> $dir/secrets.txt
 
 	# look for potentials urls via gf
 	echoTask "Checking Urls Against GF-Patterns"
@@ -83,13 +84,14 @@ else
     
     # run secretfinder against js files
 	echoTask "Running Secretfinder Against Js Files"
-	i=0
-	c=`cat $dir/js.txt | wc -l`
-	for file in $(cat $dir/js.txt);do
-		secretFinder.py -i $file -o cli >> $dir/secrets.txt
-		let "i+=1"
-		echo -ne "${green}________${i} / ${c} Js files checked ________${reset}\\r" 
-	done;
+	# i=0
+	# c=`cat $dir/js.txt | wc -l`
+	# for file in $(cat $dir/js.txt);do
+	# 	secretFinder.py -i $file -o cli >> $dir/secrets.txt
+	# 	let "i+=1"
+	# 	echo -ne "${green}________${i} / ${c} Js files checked ________${reset}\\r" 
+	# done;
+	cat $dir/js.txt | xargs -P 20 -I %% bash -c 'secretFinder.py -i %% -o cli' 2> /dev/null >> $dir/secrets.txt
 
 	# look for potentials urls via gf
 	echoTask "Checking Urls Against GF-Patterns"
