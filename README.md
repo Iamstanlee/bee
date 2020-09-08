@@ -13,9 +13,9 @@
 Bee is a c-tier recon framework, inspired by Harsh-Bothra's [Bheem](https://github.com/harsh-bothra/Bheem)
 
 ### Installation
-  * clone this repo _git clone https://github.com/Iamstanlee/bee.git_
-  * cd bee;chmod +x install.sh
-  * ./install.sh
+  * clone this repo _```git clone https://github.com/Iamstanlee/bee.git```_
+  * ```cd bee;chmod +x install.sh```
+  * then run ```./install.sh```
 
 
 ### Usage
@@ -24,8 +24,8 @@ Bee is a c-tier recon framework, inspired by Harsh-Bothra's [Bheem](https://gith
   	* medium scope recon eg _*.example.com_
   - Either (not both) of the recon category can be run at a time
   - Edit the *new_targets.txt* to contain either small and medium scope targets
-  - Save and run _bee_
-  - For small scope, pass an 's' flag to tell bee it's small scope ie _bee -s_
+  - Save and run _```bee```_
+  - For small scope, pass an 's' flag to tell bee it's small scope ie _```bee -s```_
 
 ### Tools Used
   * gf
