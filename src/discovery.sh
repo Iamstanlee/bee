@@ -45,23 +45,16 @@ if [ "$2" = "-s" ]; then
 
 	# run secretfinder against js files
 	echoTask "Running Secretfinder Against Js Files"
-	# i=0
-	# c=`cat $dir/js.txt | wc -l`
-	# for file in $(cat $dir/js.txt);do
-	# 	secretFinder.py -i $file -o cli >> $dir/secrets.txt
-	# 	let "i+=1"
-	# 	echo -ne "${green}________${i} / ${c} Js files checked ________${reset}\\r" 
-	# done;
 	cat $dir/js.txt | xargs -P 20 -I %% bash -c 'secretFinder.py -i %% -o cli' 2> /dev/null >> $dir/secrets.txt
 
 	# look for potentials urls via gf
 	echoTask "Checking Urls Against GF-Patterns"
-    doGF $dir/urls.txt	
+    doGF $dir/urls.txt;
 
 else 
 	# format domains
-	echo "https://$1" > $dir/domains.txt
-	cat $dir/httpxdomains.txt | grep -E "200|204|301|302|403" | cut -d [ -f "1" | sort -u >> $dir/domains.txt
+	# echo "https://$1" > $dir/domains.txt
+	cat $dir/httpxdomains.txt | grep -E "200|204|301|302|403" | cut -d [ -f "1" | sort -u > $dir/domains.txt
 
 	# # get all urls
 	echoTask "Getting All Urls"
@@ -77,7 +70,7 @@ else
 	for domain in $(cat $dir/domains.txt);do
 	let "i+=1"
 	echo -ne "current: $domain [ $i / $domain_count ] \\r"
-	echo "__________ $domain __________" >> fuzz.txt
+	echo "__________ $domain __________" >> $dir/fuzz.txt
 	ffuf -c -H "X-Forwarded-For: 127.0.0.1" -H "User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:72.0) Gecko/20100101 Firefox/72.0" -u "https://$1/FUZZ" -w ~/wordlists/directory.txt -s -D -e js,php,bak,txt,asp,aspx,jsp,html,zip,jar,sql,json,old,gz,shtml,log,swp,yaml,yml,config,save,rsa,ppk -ac -o $dir/fuzz.tmp
 	cat $dir/fuzz.tmp | jq '[.results[]|{url: .url, status: .status, length: .length}]' | grep -oP "status\":\s(\d{3})|length\":\s(\d{1,7})|url\":\s\"(http[s]?:\/\/.*?)\"" | paste -d' ' - - - | awk '{print $2" "$4" "$6}' | sed 's/\"//g' >> $dir/fuzz.txt;
 	rm $dir/fuzz.tmp;
@@ -92,7 +85,6 @@ else
 	cat $dir/js.txt | xargs -P 20 -I %% bash -c 'secretFinder.py -i %% -o cli' 2> /dev/null >> $dir/secrets.txt
 
 	# look for potentials urls via gf
-	echoTask "Checking Urls Against GF-Patterns"
-    doGF $dir/urls.txt	
-
+	echoTask "Checking Urls Against GF-Patterns";
+    doGF $dir/urls.txt;
 fi
