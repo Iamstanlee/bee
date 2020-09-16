@@ -33,6 +33,7 @@ git clone https://github.com/maurosoria/dirsearch.git $dir/dirsearch;
 git clone https://github.com/projectdiscovery/nuclei.git $dir/nuclei; cd $dir/nuclei/cmd/nuclei/; go build;mv nuclei $dir
 git clone https://github.com/projectdiscovery/nuclei-templates $dir/nuclei-templates;
 git clone https://github.com/defparam/smuggler $dir/smuggler;
+git clone https://github.com/FortyNorthSecurity/EyeWitness.git $dir/eyeWitness
 git clone https://github.com/1ndianl33t/Gf-Patterns;
 
 git clone https://github.com/devanshbatham/FavFreak $dir/favFreak;

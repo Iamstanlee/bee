@@ -16,6 +16,7 @@ echo "${green}__________Checking For Live Domains__________${reset}"
 cat $dir/subdomains.txt | httpx -follow-redirects  -title -status-code --follow-host-redirects -threads 300 -silent -o $dir/httpxdomains.txt;
 # scan for potential takeovers
 echo "${green}__________Checking For Potential Subdomain Takeover__________${reset}"
+# cat $dir/httpxdomains.txt | grep -E "404" | cut -d [ -f "1" | sort -u > $dir/tmp.txt;rm $dir/tmp.txt
 subjack -w $dir/subdomains.txt -t 100 -timeout 30 -a -ssl -o $dir/toTakover.txt;
 
 # fix issue with subover providers.json file
