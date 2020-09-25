@@ -1,3 +1,4 @@
+
 #!/bin/bash
 red=`tput setaf 1`
 green=`tput setaf 2`
@@ -6,7 +7,7 @@ reset=`tput sgr0`
 dir=~/recon/$1
 
 function echoTask {
- echo "${green}__________$1__________${reset}"
+ echo "${green}[*] $1${reset}"
 }
 
 function doGF {
@@ -83,7 +84,7 @@ else
 	for domain in $(cat $dir/domains.txt);do
 	let "i+=1"
 	echo -ne "current: $domain [ $i / $domain_count ] \\r"
-	echo "__________ $domain __________" >> $dir/fuzz.txt
+	echo "[*] $domain" >> $dir/fuzz.txt
 	d=`echo $domain | cut -d / -f "3"`
 	ffuf -c -H "X-Forwarded-For: 127.0.0.1" -H "User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:72.0) Gecko/20100101 Firefox/72.0" -u "https://$d/FUZZ" -w ~/wordlists/directory.txt -s -D -e js,php,bak,txt,asp,aspx,jsp,html,zip,jar,sql,json,old,gz,shtml,log,swp,yaml,yml,config,save,rsa,ppk -ac -o $dir/fuzz.tmp
 	cat $dir/fuzz.tmp | jq '[.results[]|{url: .url, status: .status, length: .length}]' | grep -oP "status\":\s(\d{3})|length\":\s(\d{1,7})|url\":\s\"(http[s]?:\/\/.*?)\"" | paste -d' ' - - - | awk '{print $2" "$4" "$6}' | sed 's/\"//g' >> $dir/fuzz.txt;

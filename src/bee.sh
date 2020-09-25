@@ -25,7 +25,7 @@ function doRecon {
                         echo '_____________________________________________'
                         echo  "${red} Performing : ${green} URL Extraction for Potential Vulnerabilities ${reset}"
                         echo '----------------------------------------------------------------------'           
-                        $dir/discovery.sh $url $2;
+                        $dir/discovery.sh $url $2 $3;
                         echo '______________________________________________________________________'
                         echo  "${red} Performing : ${green} Nuclei Scan ${reset}"
                         echo '----------------------------------------------------------------------'         
@@ -42,11 +42,11 @@ function doRecon {
                         echo '_________________________________________________________'
                         echo  "${red} Performing : ${green} Subdomain Scanning & Resolving ${reset}"
                         echo '---------------------------------------------------------'
-                        $dir/resolver.sh $url;
+                        $dir/resolver.sh $url $2;
                         echo '______________________________________________________________________'
                         echo  "${red} Performing : ${green} URL Extraction for Potential Vulnerabilities ${reset}"
                         echo '----------------------------------------------------------------------'           
-                        $dir/discovery.sh $url;
+                        $dir/discovery.sh $url $2;
                         echo '______________________________________________________________________'
                         echo  "${red} Performing : ${green} Nuclei Scan ${reset}"
                         echo '----------------------------------------------------------------------'         

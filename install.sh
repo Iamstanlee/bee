@@ -1,15 +1,15 @@
 #!/bin/sh
-# sudo su
-# install all dependencies
-# sudo apt-get install golang;
-# sudo apt-get install python3;
-# sudo apt-get install python3-pip;
-# sudo apt-get install ruby;
-# sudo apt-get install screen;
-# sudo apt-get install git;
-# wget https://golang.org/dl/go1.15.1.linux-amd64.tar.gz; 
-# tar -C /usr/local -xzf go1.15.1.linux-amd64.tar.gz;
-# echo "export PATH=$PATH:/usr/local/go/bin" >> ~/.bashrc;source ~/.bashrc;
+sudo su
+install all dependencies
+sudo apt-get install golang;
+sudo apt-get install python3;
+sudo apt-get install python3-pip;
+sudo apt-get install ruby;
+sudo apt-get install screen;
+sudo apt-get install git;
+wget https://golang.org/dl/go1.15.1.linux-amd64.tar.gz; 
+tar -C /usr/local -xzf go1.15.1.linux-amd64.tar.gz;
+echo "export PATH=$PATH:/usr/local/go/bin" >> ~/.bashrc;source ~/.bashrc;
 
 pip install requests;
 mkdir ~/recon;
@@ -34,7 +34,11 @@ git clone https://github.com/projectdiscovery/nuclei.git $dir/nuclei; cd $dir/nu
 git clone https://github.com/projectdiscovery/nuclei-templates $dir/nuclei-templates;
 git clone https://github.com/defparam/smuggler $dir/smuggler;
 git clone https://github.com/FortyNorthSecurity/EyeWitness.git $dir/eyeWitness
+chmod +x $dir/eyeWitness/Python/setup/setup.sh
+bash $dir/eyeWitness/Python/setup/setup.sh
+
 git clone https://github.com/1ndianl33t/Gf-Patterns;
+
 
 git clone https://github.com/devanshbatham/FavFreak $dir/favFreak;
 pip install -r $dir/favFreak/requirements.txt
@@ -66,6 +70,7 @@ export PATH=$PATH:$TOOLS/sublist3r
 export PATH=$PATH:$TOOLS/dirsearch
 export PATH=$PATH:$TOOLS/arjun
 export PATH=$PATH:$TOOLS/linkFinder
+export PATH:$PATH:$TOOLS/eyeWitness/Python
 export PATH=$PATH:$TOOLS/secretFinder
 alias resolver=bheem/arsenal/resolver.sht
 alias nuclear=bheem/arsenal/nuclear.sh
