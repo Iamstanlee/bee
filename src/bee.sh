@@ -23,7 +23,7 @@ function doRecon {
                         echo '_____________________________________________'
                         echo  "${red} Testing : ${green} ${url} ${reset}"
                         echo '_____________________________________________'
-                        echo  "${red} Performing : ${green} URL Extraction for Potential Vulnerabilities ${reset}"
+                        echo  "${red} Performing : ${green} URL Extraction For Potential Vulnerabilities ${reset}"
                         echo '----------------------------------------------------------------------'           
                         $dir/discovery.sh $url $2 $3;
                         echo '______________________________________________________________________'
