@@ -1,14 +1,14 @@
-#!/bin/sh
+#!/bin/bash
 # install apache2, ngrok
 mkdir ~/recon;
 mkdir ~/wordlist;
 dir=/usr/local/bin;
 
 # install all dependencies
-wget https://golang.org/dl/go1.15.6.linux-amd64.tar.gz;
-tar -C /usr/local -xzf go1.15.6.linux-amd64.tar.gz;
-echo "export PATH=$PATH:/usr/local/go/bin" >> ~/.bashrc;
-source ~/.bashrc;
+# wget https://golang.org/dl/go1.15.6.linux-amd64.tar.gz;
+# tar -C /usr/local -xzf go1.15.6.linux-amd64.tar.gz;
+# echo "export PATH=$PATH:/usr/local/go/bin" >> ~/.bashrc;
+# source ~/.bashrc;
 sudo apt-get install python3;
 sudo apt-get install ruby;
 sudo apt-get install screen;
@@ -33,9 +33,9 @@ git clone https://github.com/projectdiscovery/nuclei-templates $dir/nuclei-templ
 git clone https://github.com/defparam/smuggler $dir/smuggler;
 git clone https://github.com/1ndianl33t/Gf-Patterns;
 git clone https://github.com/aboul3la/Sublist3r.git $dir/sublist3r;
-pip install -r $dir/sublist3r/requirements.txt
+pip3 install -r $dir/sublist3r/requirements.txt
 git clone https://github.com/m4ll0k/SecretFinder $dir/secretFinder;
-pip install -r $dir/secretFinder/requirements.txt
+pip3 install -r $dir/secretFinder/requirements.txt
 
 
 # organize, clean up, download wordlists and misc

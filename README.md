@@ -13,6 +13,16 @@ Bee is a c-tier recon framework, inspired by Harsh-Bothra's [Bheem](https://gith
 
 ### Installation
 
+- install
+
+  ```
+  - [Golang](https://golang.org/doc/install)
+  - sudo apt install python3
+  - sudo apt install python3-pip
+  - sudo apt-get install jq
+
+  ```
+
 - clone this repo
   ```
   git clone https://github.com/Iamstanlee/bee.git
