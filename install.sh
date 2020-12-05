@@ -30,7 +30,7 @@ GO111MODULE=on go get -u -v github.com/projectdiscovery/httpx/cmd/httpx;
 # install dependencies via git
 
 git clone https://github.com/maurosoria/dirsearch.git $dir/dirsearch;
-git clone https://github.com/projectdiscovery/nuclei.git $dir/nuclei; cd $dir/nuclei/cmd/nuclei/; go build;mv nuclei $dir
+git clone https://github.com/projectdiscovery/nuclei.git $dir/nuclei; cd $dir/nuclei/cmd/nuclei/; go build;mv nuclei $dir; cd;
 git clone https://github.com/projectdiscovery/nuclei-templates $dir/nuclei-templates;
 git clone https://github.com/defparam/smuggler $dir/smuggler;
 # git clone https://github.com/FortyNorthSecurity/EyeWitness.git $dir/eyeWitness
@@ -59,8 +59,8 @@ mv $dir/secretFinder/SecretFinder.py $dir/secretFinder/secretFinder.py;
 mv ~/home/go/bin/SubOver ~/home/go/bin/subOver;
 mv Gf-Patterns/*.json ~/.gf;
 rm -rf Gf-Patterns;
-echo 'source $GOPATH/src/github.com/tomnomnom/gf/gf-completion.bash' >> ~/.bashrc;
-cp -r $GOPATH/src/github.com/tomnomnom/gf/examples ~/.gf;
+echo 'source $HOME/go/src/github.com/tomnomnom/gf/gf-completion.bash' >> ~/.bashrc;
+cp -r $HOME/go/src/github.com/tomnomnom/gf/examples ~/.gf;
 
 echo "
 export GOPATH=$HOME/go
@@ -72,7 +72,6 @@ export PATH=$PATH:$TOOLS/arjun
 export PATH=$PATH:$TOOLS/linkFinder
 export PATH:$PATH:$TOOLS/eyeWitness/Python
 export PATH=$PATH:$TOOLS/secretFinder
-alias resolver=bheem/arsenal/resolver.sht
-alias nuclear=bheem/arsenal/nuclear.sh
+alias bee="~/bee/src/bee.sh"
 " >> ~/.bashrc;source ~/.bashrc;
 
