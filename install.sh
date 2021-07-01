@@ -9,7 +9,6 @@ dir=/usr/local/bin;
 # tar -C /usr/local -xzf go1.15.6.linux-amd64.tar.gz;
 # echo "export PATH=$PATH:/usr/local/go/bin" >> ~/.bashrc;
 # source ~/.bashrc;
-sudo apt-get install python3;
 sudo apt-get install ruby;
 sudo apt-get install screen;
 sudo apt-get install git;
@@ -52,13 +51,10 @@ cp -r $HOME/go/src/github.com/tomnomnom/gf/examples ~/.gf;
 
 echo "
 export GOPATH=$HOME/go
-export TOOLS=$PATH:/usr/local/bin
+export TOOLS=$PATH/usr/local/bin
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$TOOLS/sublist3r
 export PATH=$PATH:$TOOLS/dirsearch
-export PATH=$PATH:$TOOLS/arjun
-export PATH=$PATH:$TOOLS/linkFinder
-export PATH:$PATH:$TOOLS/eyeWitness/Python
 export PATH=$PATH:$TOOLS/secretFinder
 alias bee="~/bee/src/bee.sh"
 " >> ~/.bashrc;source ~/.bashrc;
